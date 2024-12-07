@@ -1,4 +1,5 @@
 import streamlit as st
+from yolo_code import load_model, train_model  # Import functions from yolo_code.py
 
 # Streamlit app interface for user input
 st.title("YOLOv11 Model Training")
@@ -24,3 +25,17 @@ st.write(f"Data Path: {data_path}")
 st.write(f"Epochs: {epochs}")
 st.write(f"Image Size: {img_size}")
 st.write(f"Device: {device}")
+
+# Button to start training
+if st.button("Start Training"):
+    # Load the YOLO model
+    st.write("Loading the YOLO model...")
+    model = load_model(model_path)
+    
+    # Train the model
+    st.write("Starting model training...")
+    train_results = train_model(model, data_path, epochs, img_size, device)
+    
+    # Display training results
+    st.write("Training completed successfully!")
+    st.write("Training Results:", train_results)
