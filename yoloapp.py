@@ -24,3 +24,13 @@ st.write(f"Data Path: {data_path}")
 st.write(f"Epochs: {epochs}")
 st.write(f"Image Size: {img_size}")
 st.write(f"Device: {device}")
+
+# Load the model and train it
+    st.write("Loading model...")
+    model = load_model(model_path)
+    st.write("Starting training...")
+    train_results = train_model(model, data_path, epochs, img_size, device)
+
+    # Display the training results
+    st.write("Training completed successfully!")
+    st.write("Training Results:", train_results)
