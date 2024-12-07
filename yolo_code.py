@@ -1,12 +1,16 @@
 from ultralytics import YOLO
 
-# Load the model
-model = YOLO("yolo11n.pt")
+# Function to load the YOLO model
+def load_model(model_path):
+    model = YOLO(model_path)
+    return model
 
-# Train the model using CPU
-train_results = model.train(
-    data="C:/yolo11/data.yaml",  # Use a raw string or double backslashes
-    epochs=2,
-    imgsz=640,
-    device='cpu'  # Specify 'cpu' for CPU training
-)
+# Function to train the YOLO model
+def train_model(model, data_path, epochs=10, img_size=640, device="cpu"):
+    results = model.train(
+        data=data_path,
+        epochs=epochs,
+        imgsz=img_size,
+        device=device
+    )
+    return results
